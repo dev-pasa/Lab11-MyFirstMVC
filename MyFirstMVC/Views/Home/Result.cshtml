@@ -1,0 +1,25 @@
+﻿@model List<MyFirstMVC.Models.TimePerson>
+
+<head>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+
+<body>
+    <main class="result">
+        <h1 id="resultTitle"> Results </h1>
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <table>
+            <tr><th>Name</th><th>Title</th><th>Year</th></tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Title</td>
+                    <td>@item.Year</td>
+                </tr>
+            }
+        </table>
+        <a asp-controller="Home" asp-action="Index">Search Again</a>
+    </main>
+
+</body>
