@@ -19,15 +19,36 @@ namespace MyFirstMVC.Models
         public string Context { get; set; }
 
 
-
-        public static string[] ReadFile(string filePath)
+        /// <summary>
+        /// Convert raw data to list when a data when string[] data is passed into the method  
+        /// </summary>
+        /// <param name="fullData"></param>
+        /// <returns></returns>
+        public static List<TimePerson> Search(int startYear, int endYear)
         {
+            List<TimePerson> allPeople = new List<TimePerson>();
+            string path = Path.Combine(AppContext.BaseDirectory, "../../../wwwroot/personOfTheYear.csv");
+            string[] myFile = File.ReadAllLines(path);
 
-            string setRoot = Environment.CurrentDirectory;
-            string finalPath = Path.GetFullPath(Path.Combine(setRoot, filePath));
-            string[] rawData = File.ReadAllLines(filePath);
-
-            return rawData;
+            for (int i = 1; i < myFile.Length; i++)
+            {
+                string[] parsedCSV = myFile[i].Split(',');
+                
+                allPeople.Add(new TimePerson
+                {
+                    Year = Convert.ToInt32(parsedCSV[0]),
+                    Honor = parsedCSV[1], 
+                    Name = parsedCSV[2],
+                    Country = parsedCSV[3], 
+                    Birth_Year = (parsedCSV[4] == "") ? 0 : Convert.ToInt32(parsedCSV[4]),
+                    DeathYear = (parsedCSV[5] == "") ? 0 : Convert.ToInt32(parsedCSV[5]),
+                    Title = parsedCSV[6],
+                    Category = parsedCSV[7], 
+                    Context = parsedCSV[8],
+                });
+            }
+            List<TimePerson> filter = allPeople.Where(p => (p.Year >= startYear) && (p.Year <= endYear)).ToList();
+            return filter;
         }
     }
 }

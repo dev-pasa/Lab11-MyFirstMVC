@@ -9,13 +9,22 @@ namespace MyFirstMVC.Controllers
 {
     public class HomeController : Controller
     {
-
+        /// <summary>
+        /// View the front page
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ViewResult Index()
         {   
             return View();
         }
 
+        /// <summary>
+        /// Post the result in the Results page
+        /// </summary>
+        /// <param name="startYear"></param>
+        /// <param name="endYear"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Index(int startYear, int endYear)
         {
@@ -23,10 +32,10 @@ namespace MyFirstMVC.Controllers
         }
 
         [HttpGet]
-        public ViewResult Result(int startYear, int endYear)
+        public IActionResult Result(int startYear, int endYear)
         {
-            List<TimePerson> persons = TimePerson.Search(startYear, endYear);
-            return View(persons);
+            //TimePerson persons = new TimePerson();
+            return View(TimePerson.Search(startYear, endYear));
         }
     }
 }
