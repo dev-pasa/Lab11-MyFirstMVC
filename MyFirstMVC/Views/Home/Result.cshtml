@@ -6,9 +6,11 @@
 
 <body>
     <main class="result">
-        <h1 id="resultTitle"> Results </h1>
+        <h2 id="mainTitle">Results</h2>
+        <h2 id="subTitle"> Person of the Year Database</h2>
+        <h3 id="subTitle"> Total results: @Model.Count</h3>
         <a asp-controller="Home" asp-action="Index">Home</a>
-        <table>
+        <table align="center">
             <tr><th>Name</th><th>Title</th><th>Year</th></tr>
             @foreach (var item in Model)
             {
@@ -18,6 +20,7 @@
                     <td>@item.Year</td>
                 </tr>
             }
+
         </table>
         <a asp-controller="Home" asp-action="Index">Search Again</a>
     </main>
