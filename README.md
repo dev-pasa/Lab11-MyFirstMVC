@@ -9,8 +9,8 @@ This is my first ASP.NET Core MVC web application. Create a web app that will al
 ![display2](/Assets/ResultView.jpg)
 
 # Directions
-Clone the repository, open the PersonOfTheYear solution in Visual Studio, and run IIS Express. This should open the website in your browser.
-Select two different years and hit submit. You will then see the names of people who were recognized as the Time's Magazine Person of The Year.
+1. Clone the repository and run IIS Express. This should open the app in your browser.
+2. Select two different years and hit submit. The results will show the names of people who were recognized as the Time's Magazine Person of The Year.
 
 # Relevant details
 This app does not use any external API can be hosted in any computer without connecting to external data source. 
